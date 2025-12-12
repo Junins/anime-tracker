@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const path = require('path');
 const db = require('./database/db');
 const authRoutes = require('./routes/auth');
 const obraRoutes = require('./routes/obras');
@@ -21,16 +20,6 @@ app.use('/api/minha-lista', listaRoutes);
 app.get('/api/health', (req, res) => {
   res.json({ status: 'API funcionando' });
 });
-
-if (process.env.NODE_ENV === 'production') {
-  const frontendPath = path.join(__dirname, '../frontend/build');
-  
-  app.use(express.static(frontendPath));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(frontendPath, 'index.html'));
-  });
-}
 
 const PORT = process.env.PORT || 5000;
 
