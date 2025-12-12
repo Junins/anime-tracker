@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 const db = require('./database/db');
 const authRoutes = require('./routes/auth');
 const obraRoutes = require('./routes/obras');
